@@ -10,3 +10,12 @@ handle: Cyberduck_uk
 # Build settings
 markdown: kramdown
 permalink: pretty
+
+authors:
+  Ben:
+    name: Ben Speakman
+    display_name: Ben
+    gravatar: 0a75268f75cc85e38c2c0375c3523aee
+    email: ben@cyber-duck.co.uk
+    web: http://threesquared.net
+    github: Ben-Speakman
