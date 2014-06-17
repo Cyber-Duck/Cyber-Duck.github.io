@@ -1,7 +1,7 @@
 # Site settings
 title: Cyber-Duck Developer's Blog
 email: info@cyber-duck.co.uk
-description: "A more technical blog from [Cyber-Duck](http://www.cyber-duck.co.uk/)"
+description: "A more technical blog from Cyber-Duck"
 baseurl: ""
 url: "http://cyber-duck.github.io/"
 username: Cyber-Duck
