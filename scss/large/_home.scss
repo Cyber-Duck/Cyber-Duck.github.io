@@ -1,0 +1,72 @@
+// * Home page
+
+.header {
+  padding: 0 0;
+  border-top: 12px solid $brand;
+  background-color: desaturate(lighten($brand, 30), 20);
+  height: 80px;
+  h1 {
+    font-weight: 400;
+    }
+  a {
+    font-family: 'Roboto Slab', serif;
+    color: $white;
+    font-weight: 400;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+ul {
+  background-color: $white;
+  list-style: none;
+
+}
+
+img.avatar {
+  margin: 8px 0 0 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  display: block;
+}
+
+a.post-link {
+  font-family: 'Roboto Slab', serif;
+  color: $brand;
+  font-size: 30px;
+  font-weight: 400;
+  text-decoration: none;
+  display: block;
+}
+
+.post-date {
+  font-family: 'Roboto Slab', serif;
+  color: desaturate(lighten($brand,30),70);
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+p.post-excerpt {
+  font-family: 'Roboto Slab', serif;
+  color: desaturate(lighten($brand,20),40);
+  font-size: 16px;
+  font-weight: 300;
+}
+
+a {
+  color: $brand;
+}
+
+a.read-more {
+  font-family: 'Roboto Slab', serif;
+  color: $brand;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+

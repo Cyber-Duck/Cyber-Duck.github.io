@@ -6,7 +6,7 @@ categories: jekyll update
 author: Ben
 ---
 
-**In this blog I am going to describe how we manage our [Codeigniter](http://ellislab.com/codeigniter) deployments across several load balanced [Amazon EC2](http://aws.amazon.com/ec2/) instances, but this should prove applicable for any PHP based application.**
+In this blog I am going to describe how we manage our [Codeigniter](http://ellislab.com/codeigniter) deployments across several load balanced [Amazon EC2](http://aws.amazon.com/ec2/) instances, but this should prove applicable for any PHP based application.
 
 I am not going to go into the benefits and advantages of scalable apps here. If you aren’t aware of why a set-up like this would benefit your application you probably shouldn’t be doing it. Please remember that running an application across multiple instances is usually not necessary for the majority of web apps. However if you think your project might benefit, here are some points we think are important to note before starting.
 
@@ -18,7 +18,7 @@ Ideally the application has to be dependent only on your web server and of cours
 
 This means the core application has to be separated from other traditional components like the database and file storage. AWS provides products like [RDS](http://aws.amazon.com/rds/) and [S3](http://aws.amazon.com/s3/) that allow you to use separate services to provide individual resources to all your instances. This separation is what makes an application truly distributed and means that individual components can be scaled up and down as required.
 
-Usually the first change is to the database location. If you don’t already, you need a single external database instance or cluster that all of your web applications will talk to. There’s not much point in running a distributed application if they are all talking to individual local databases. 
+Usually the first change is to the database location. If you don’t already, you need a single external database instance or cluster that all of your web applications will talk to. There’s not much point in running a distributed application if they are all talking to individual local databases.
 
 Other changes you might need to make include using a centralized cache like [ElastiCache](http://aws.amazon.com/elasticache/). Or if your application requires file storage you can use S3 to provide a centralized location so each instance has access to the same files. Alternatively you can use Capistrano's [shared folders](http://stackoverflow.com/a/4648328/908257).
 There are already [plugins](http://wordpress.org/plugins/amazon-s3-and-cloudfront/) for other web software like WordPress that allow you to use S3 to host your files using the native file manager. This means you don’t need to think about keeping files synchronized across instances.

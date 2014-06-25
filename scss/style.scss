@@ -1,0 +1,16 @@
+@import 'version';
+@import 'vars';
+@import 'mixins';
+
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700);
+
+// * Only styles common for all screen sizes
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: desaturate(lighten($brand,67),70);
+  color: $text;
+}
+

@@ -1,20 +1,31 @@
 ---
 layout: default
 ---
+{% assign authors = site.authors %}
 
-<div class="home">
-
-  <h1>Posts</h1>
-
-  <ul class="posts">
+<div class="container">
+<div class="col8 pre2">
+  <ul>
     {% for post in site.posts %}
       <li>
-        <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+        {% assign author = site.authors[post.author] %}
+        <img class="avatar" src="http://www.gravatar.com/avatar/{{ author.gravatar }}.png"/>
         <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        <span class="post-date">By {{ author.name }} -
+          {% assign d = post.date | date: "%-d"  %}
+          {% case d %}
+            {% when '1' or '21' or '31' %}{{ d }}st
+            {% when '2' or '22' %}{{ d }}nd
+            {% when '3' or '23' %}{{ d }}rd
+            {% else %}{{ d }}th
+            {% endcase %}
+            {{ post.date | date: "%B" }}
+          {{ post.date | date: "%Y" }}
+        </span>
+        <p class="post-excerpt">{{ post.excerpt | remove: '<p>' | remove: '</p>' }}</p>
+        <a class="read-more" href="{{ post.url | prepend: site.baseurl }}">Read more <span class="arrow">&#8594;</span></a>
       </li>
     {% endfor %}
   </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
+</div>
 </div>

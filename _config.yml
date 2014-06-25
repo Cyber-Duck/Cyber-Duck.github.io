@@ -12,7 +12,7 @@ markdown: kramdown
 permalink: pretty
 
 authors:
-  Ben:
+  ben:
     name: Ben Speakman
     display_name: Ben
     gravatar: 0a75268f75cc85e38c2c0375c3523aee
