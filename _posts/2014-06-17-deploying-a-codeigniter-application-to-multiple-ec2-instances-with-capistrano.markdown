@@ -3,7 +3,7 @@ layout: post
 title:  "Deploying a Codeigniter application to multiple EC2 instances with Capistrano"
 date:   2014-06-16 11:22:52
 categories: jekyll update
-author: Ben
+author: ben
 ---
 
 In this blog I am going to describe how we manage our [Codeigniter](http://ellislab.com/codeigniter) deployments across several load balanced [Amazon EC2](http://aws.amazon.com/ec2/) instances, but this should prove applicable for any PHP based application.
