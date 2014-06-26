@@ -1,0 +1,59 @@
+// * Typography
+
+.post {
+    margin: 0 0 ($gutter * 2) 0;
+    h1 {
+        margin: 0 0 ($gutter/2) 0;
+        padding-right: 70px;
+        font-size: 1.6em;
+        line-height: 1.2em;
+        font-weight: 400;
+        color: $brand;
+    }
+    h2 {
+        margin: 0 0 ($gutter/2) 0;
+        padding-right: 70px;
+    }
+    pre {
+        width: 100%;
+        background-color: $code-bg;
+        padding: $gutter;
+        margin-left: -#{$gutter};
+        overflow: auto;
+    }
+    footer {
+        border-top: 1px dotted $border;
+    }
+}
+
+.post-meta {
+    color: $meta;
+    display: block;
+    font-size: .8em;
+    margin: 0;
+    padding-top: 5px;
+    border-top: 1px dotted $border;
+    position: relative;
+}
+
+.avatar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: -30px 0 0 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    display: block;
+    overflow: hidden;
+    img {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+.read-more {
+    font-weight: 700;
+    text-decoration: none;
+}
+

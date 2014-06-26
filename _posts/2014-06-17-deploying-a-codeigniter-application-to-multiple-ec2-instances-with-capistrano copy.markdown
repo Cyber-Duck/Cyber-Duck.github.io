@@ -10,7 +10,7 @@ In this blog I am going to describe how we manage our [Codeigniter](http://ellis
 
 I am not going to go into the benefits and advantages of scalable apps here. If you aren’t aware of why a set-up like this would benefit your application you probably shouldn’t be doing it. Please remember that running an application across multiple instances is usually not necessary for the majority of web apps. However if you think your project might benefit, here are some points we think are important to note before starting.
 
-##Thinking Distributed
+### Thinking Distributed
 
 The first thing we need to get to grips with is how to configure your application to be run across multiple servers. Once you begin to think of your application as just being a single cog in a bigger machine you can begin to make the necessary changes to it.
 
@@ -23,11 +23,11 @@ Usually the first change is to the database location. If you don’t already, yo
 Other changes you might need to make include using a centralized cache like [ElastiCache](http://aws.amazon.com/elasticache/). Or if your application requires file storage you can use S3 to provide a centralized location so each instance has access to the same files. Alternatively you can use Capistrano's [shared folders](http://stackoverflow.com/a/4648328/908257).
 There are already [plugins](http://wordpress.org/plugins/amazon-s3-and-cloudfront/) for other web software like WordPress that allow you to use S3 to host your files using the native file manager. This means you don’t need to think about keeping files synchronized across instances.
 
-##Common Pitfalls
+### Common Pitfalls
 
 Some of the pitfalls we ran into whilst modifying our applications include:
 
-####SSL Detection
+#### SSL Detection
 
 Amazon [ELB](http://aws.amazon.com/elasticloadbalancing/) offers SSL termination so that a certificate can be installed on the load balancer. This is great so you don’t have to configure your web instances to serve certificates. However it does mean that your application will effectively only see unencrypted connections from the load balancer. This poses a problem if for example you want to force HTTPS on a certain controller. How do you know which requests are secure and which are not?
 Fortunately the ELB also adds the `HTTP_X_FORWARDED_PROTO` header. So we came up with the following Codeigniter helper function to force SSL based on [this thread](http://ellislab.com/forums/viewthread/83154/).
@@ -52,7 +52,7 @@ function force_ssl()
 }
 {% endhighlight %}
 
-####Health Checker
+#### Health Checker
 
 The ELB load balancer uses a [health checker](http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/ts-elb-healthcheck.html) based on parameters you define. This makes sure hosts that go down are not included in the load balancing pool. An issue can arise if you use .htacess rules to forward all requests to non-specified subdomains to the main domain for SEO purposes. This will cause a problem when the health checker tries to check a URL on each instance and it is redirected to the main load-balanced domain. Fortunately you can use the `HTTP_USER_AGENT` AWS adds to the health checker to exclude it from your redirect rules.
 
@@ -63,18 +63,18 @@ RewriteCond %{HTTP_USER_AGENT} !^ELB-HealthChecker
 
 This means you can get a response and therefore a health status update back from a specific instance and not have it sent through your load balancer.
 
-####DNS
+#### DNS
 
 Amazon recommends that you CNAME your domain to the DNS entry of your loadbalancer. However one caveat of the DNS system is you [can’t CNAME a root domain](http://serverfault.com/a/170200). Again AWS has thought of this with their [Route53](http://aws.amazon.com/route53/) DNS product. With this you can set up [Aliases](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/CreatingAliasRRSets.html) that map root domains to ELB load balancers. The issue is you will need to move your DNS records over to Route53. Whilst this doesn’t need to be an issue its best to think about it while you are in the planning stage.
 
 
-####SSH Keys
+#### SSH Keys
 
 Another issue we experienced, which is probably more prevalent on windows based machines. Is that sometimes Capistrano will fail if it doesn’t have access to both the GIT repository and EC2 instance SSH keys. On windows make sure you are running [Pageant](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) and all the right keys are in there or your C:\Users\<USERNAME>\.ssh\config file. [Read more](http://nerderati.com/2011/03/simplify-your-life-with-an-ssh-config-file/) about ssh config files.
 
 *Checking that the raw “git” command from the command line can access the repository using your keys is useful when debugging authentication problems in Capistrano.*
 
-##Using Capistrano
+### Using Capistrano
 
 [Capistrano](http://www.capistranorb.com/) is a tool we use to perform deployments on multiple machines simultaneously. There are several good articles on how to install and configure Capistrano so I wont go into it here. We found [this article](http://blog.grio.com/2012/07/how-to-deploy-your-web-app-to-amazon-ec2-using-capistrano.html) by Alberto Montagnese very helpful and based our deploy.rb on it.
 
@@ -133,7 +133,7 @@ Some extra things to note about our deploy.rb:
 
 I would very strongly recommend you read the [Capistrano documentation](https://github.com/capistrano/capistrano/wiki/2.x-Significant-Configuration-Variables) on these options and understand what they do.
 
-##Conclusions
+### Conclusions
 
 In short it’s not too difficult to get your application running across multiple servers. The benefits for the right type of apps can be enormous and can bring a whole new level of flexibility to the way your app can respond to changing traffic demands. Especially if used with tools like [Auto Scaling](http://aws.amazon.com/autoscaling/).
 Also whilst Capistrano just happens to work for us there are other tools out there to help you manage your distributed deployments like [Grunt](http://gruntjs.com/). If you think your application would be suited for a distributed environment then experiment and see what works the best for your particular needs.

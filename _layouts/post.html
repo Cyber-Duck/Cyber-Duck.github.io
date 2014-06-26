@@ -2,15 +2,32 @@
 layout: default
 ---
 {% assign author = site.authors[page.author] %}
-<div class="post">
-
-  <header class="post-header">
-    <h1>{{ page.title }}</h1>
-    <p class="meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} by {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
-  </header>
-
-  <article class="post-content">
-  {{ content }}
-  </article>
-
+<div class="container">
+    <div class="col8 pre2">
+        <div class="box box-content">
+        	<p class="btn-back"><a href="/"><span class="arrow">&#8592;</span> Back</a></p>
+			<article class="post">
+				<header>
+				    <h1><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></h1>
+				    <p class="post-meta">
+				    	{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} by {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}
+	                    <span class="avatar">
+	                        <img src="http://www.gravatar.com/avatar/{{ author.gravatar }}.png"/>
+	                    </span>
+				    </p>
+				</header>
+				<div class="post-content">
+					{{ content }}
+				</div>
+				<footer>
+					<p class="btn-wrap">
+                    	<a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | prepend: site.url }}" target="_blank" class="btn btn-facebook"><em class="icon icon-facebook-squared"></em> Post to Facebook</a>
+                    	<a href="http://twitter.com/share?text={{ page.title }}%20%40Cyberduck_UK" target="_blank" class="btn btn-twitter"><em class="icon icon-twitter"></em> Share on Twitter</a>
+                    	<a href="https://plus.google.com/share?url={{ page.url | prepend: site.url }}" target="_blank" class="btn btn-google"><em class="icon icon-gplus-squared"></em> Add to Google+</a>
+                </p>
+				</footer>
+			</article>
+        	<p class="btn-back"><a href="/"><span class="arrow">&#8592;</span> Back</a></p>
+		</div>
+	</div>
 </div>

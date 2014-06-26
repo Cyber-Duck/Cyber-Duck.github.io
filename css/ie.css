@@ -1,210 +1,59 @@
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-nav,
-section {
-  display: block; }
+/*
+Syntax error: File to import not found or unreadable: large/home.
+              Load paths:
+                /Users/ramonlapenta/Sites/cd-devblog (DEPRECATED)
+                /Users/ramonlapenta/Sites/cd-devblog/scss
+        on line 69 of scss/ie.scss
 
-.container {
-  margin: 0 auto;
-  width: 960px; }
+64:   float: none;
+65:   margin: 0 auto;
+66: }
+67: 
+68: // * Import all sections and common files from desk folder
+69: @import 'large/home';
+70: @import 'large/header';
 
-.col2 {
-  float: left;
-  margin: 0 10px;
-  width: 140px; }
-
-.col3 {
-  float: left;
-  margin: 0 10px;
-  width: 220px; }
-
-.col4 {
-  float: left;
-  margin: 0 10px;
-  width: 300px; }
-
-.col5 {
-  float: left;
-  margin: 0 10px;
-  width: 380px; }
-
-.col6 {
-  float: left;
-  margin: 0 10px;
-  width: 460px; }
-
-.col7 {
-  float: left;
-  margin: 0 10px;
-  width: 540px; }
-
-.col8 {
-  float: left;
-  margin: 0 10px;
-  width: 620px; }
-
-.col9 {
-  float: left;
-  margin: 0 10px;
-  width: 700px; }
-
-.col10 {
-  float: left;
-  margin: 0 10px;
-  width: 780px; }
-
-.col11 {
-  float: left;
-  margin: 0 10px;
-  width: 860px; }
-
-.col12 {
-  float: left;
-  margin: 0 10px;
-  width: 940px; }
-
-.pre1 {
-  padding-left: 80px; }
-
-.pre2 {
-  padding-left: 160px; }
-
-.pre3 {
-  padding-left: 240px; }
-
-.pre4 {
-  padding-left: 320px; }
-
-.pre5 {
-  padding-left: 400px; }
-
-.pre6 {
-  padding-left: 480px; }
-
-.pre7 {
-  padding-left: 560px; }
-
-.pre8 {
-  padding-left: 640px; }
-
-.pre9 {
-  padding-left: 720px; }
-
-.pre10 {
-  padding-left: 800px; }
-
-.pre11 {
-  padding-left: 880px; }
-
-.suf1 {
-  padding-right: 80px; }
-
-.suf2 {
-  padding-right: 160px; }
-
-.suf3 {
-  padding-right: 240px; }
-
-.suf4 {
-  padding-right: 320px; }
-
-.suf5 {
-  padding-right: 400px; }
-
-.suf6 {
-  padding-right: 480px; }
-
-.suf7 {
-  padding-right: 560px; }
-
-.suf8 {
-  padding-right: 640px; }
-
-.suf9 {
-  padding-right: 720px; }
-
-.suf10 {
-  padding-right: 800px; }
-
-.suf11 {
-  padding-right: 880px; }
-
-.colr {
-  float: right;
-  margin: 0 10px; }
-
-.alpha {
-  margin-left: 0; }
-
-.omega {
-  margin-right: 0; }
-
-.clear {
-  clear: both; }
-
-.center {
-  float: none;
-  margin: 0 auto; }
-
-.header {
-  padding: 0 0;
-  border-top: 12px solid #313967;
-  background-color: #898da8;
-  height: 80px; }
-  .header h1 {
-    font-weight: 400; }
-  .header a {
-    font-family: 'Roboto Slab', serif;
-    color: white;
-    font-weight: 400;
-    text-decoration: none; }
-    .header a:hover {
-      text-decoration: underline; }
-
-ul {
-  background-color: white;
-  list-style: none; }
-
-img.avatar {
-  margin: 8px 0 0 0;
-  width: 60px;
-  height: 60px;
-  border-radius: 30px;
-  display: block; }
-
-a.post-link {
-  font-family: 'Roboto Slab', serif;
-  color: #313967;
-  font-size: 30px;
-  font-weight: 400;
-  text-decoration: none;
-  display: block; }
-
-.post-date {
-  font-family: 'Roboto Slab', serif;
-  color: #999999;
-  font-size: 14px;
-  font-weight: 400;
-  text-decoration: none; }
-
-p.post-excerpt {
-  font-family: 'Roboto Slab', serif;
-  color: #7f7f7f;
-  font-size: 16px;
-  font-weight: 300; }
-
-a {
-  color: #313967; }
-
-a.read-more {
-  font-family: 'Roboto Slab', serif;
-  color: #313967;
-  font-size: 16px;
-  font-weight: 700;
-  text-decoration: none; }
+Backtrace:
+scss/ie.scss:69
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/tree/import_node.rb:66:in `rescue in import'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/tree/import_node.rb:45:in `import'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/tree/import_node.rb:28:in `imported_file'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/tree/import_node.rb:37:in `css_import?'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/tree/visitors/perform.rb:283:in `visit_import'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/tree/visitors/perform.rb:152:in `block in visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/stack.rb:79:in `block in with_base'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/stack.rb:121:in `with_frame'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/stack.rb:79:in `with_base'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/tree/visitors/perform.rb:152:in `visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/tree/visitors/base.rb:52:in `map'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/tree/visitors/perform.rb:161:in `block in visit_children'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/tree/visitors/perform.rb:173:in `with_environment'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/tree/visitors/perform.rb:160:in `visit_children'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/tree/visitors/perform.rb:180:in `visit_root'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/tree/visitors/perform.rb:151:in `visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/tree/root_node.rb:36:in `css_tree'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/tree/root_node.rb:20:in `render'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/engine.rb:274:in `render'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/plugin/compiler.rb:378:in `update_stylesheet'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/plugin/compiler.rb:189:in `block in update_stylesheets'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/plugin/compiler.rb:186:in `each'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/plugin/compiler.rb:186:in `update_stylesheets'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/plugin/compiler.rb:357:in `on_file_changed'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.3.8/lib/sass/plugin/compiler.rb:250:in `block in watch'
+/Library/Ruby/Gems/2.0.0/gems/listen-2.7.9/lib/listen/listener.rb:276:in `call'
+/Library/Ruby/Gems/2.0.0/gems/listen-2.7.9/lib/listen/listener.rb:276:in `_process_changes'
+/Library/Ruby/Gems/2.0.0/gems/listen-2.7.9/lib/listen/listener.rb:233:in `block in _wait_for_changes'
+/Library/Ruby/Gems/2.0.0/gems/listen-2.7.9/lib/listen/listener.rb:216:in `loop'
+/Library/Ruby/Gems/2.0.0/gems/listen-2.7.9/lib/listen/listener.rb:216:in `_wait_for_changes'
+/Library/Ruby/Gems/2.0.0/gems/listen-2.7.9/lib/listen/listener.rb:312:in `block in _start_wait_thread'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: File to import not found or unreadable: large/home.\A               Load paths:\A                 /Users/ramonlapenta/Sites/cd-devblog (DEPRECATED)\A                 /Users/ramonlapenta/Sites/cd-devblog/scss\A         on line 69 of scss/ie.scss\A \A 64:   float: none;\A 65:   margin: 0 auto;\A 66: }\A 67: \A 68: // * Import all sections and common files from desk folder\A 69: @import 'large/home';\A 70: @import 'large/header';"; }

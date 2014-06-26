@@ -79,9 +79,7 @@ $wrap: ($col-width * $col-qty) + $gutter * ($col-qty - 1);
   margin: 0 auto;
 }
 
-// * Import section files
-@import 'header';
-@import 'home';
+
 
 // * Extra large desktop
 @media (min-width: $breakpoint-xl) {

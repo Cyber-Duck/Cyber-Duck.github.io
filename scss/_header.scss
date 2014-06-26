@@ -1,0 +1,65 @@
+// * Head styles
+
+.header {
+    padding: 0;
+    border-top: 12px solid  desaturate(lighten($brand, 15), 20);
+    background-color: desaturate(lighten($brand, 30), 20);
+    height: 80px;
+    h1 {
+        font-weight: 300;
+        margin: -12px 0 0 0;
+        border-top: 12px solid  $brand;
+        height: 80px;
+        padding: 0 $gutter;
+        background-color: desaturate(lighten($brand, 25), 20);
+    }
+    a {
+        color: $white;
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+@media (min-width: $breakpoint-large) {
+
+    .header {
+        height: 80px;
+        h1 {
+            height: 80px;
+            line-height: 76px;
+            font-size: 1.8em;
+        }
+    }
+
+}
+@media (min-width: $breakpoint-medium) and (max-width: ($breakpoint-large - 1)) {
+
+    .header {
+        height: 60px;
+        h1 {
+            height: 60px;
+            line-height: 54px;
+            font-size: 1.8em;
+        }
+    }
+
+}
+@media (min-width: $breakpoint-small) and (max-width: ($breakpoint-medium - 1)) {
+
+    .header {
+        height: 50px;
+        border-top: 6px solid  desaturate(lighten($brand, 15), 20);
+        h1 {
+            margin: -6px 0 0 0;
+            border-top: 6px solid  $brand;
+            height: 50px;
+            line-height: 44px;
+            font-size: 1.4em;
+        }
+    }
+
+}
+
+// * Main navigation

@@ -2,8 +2,8 @@
 title: Cyber-Duck Developer's Blog
 email: info@cyber-duck.co.uk
 description: "A more technical blog from Cyber-Duck"
-baseurl: ""
-url: "http://cyber-duck.github.io/"
+baseurl: "http://cyber-duck.github.io"
+url: "http://cyber-duck.github.io"
 username: Cyber-Duck
 handle: Cyberduck_uk
 
@@ -19,3 +19,10 @@ authors:
     email: ben@cyber-duck.co.uk
     web: http://threesquared.net
     github: Ben-Speakman
+  ramon:
+    name: Ramon Lapenta
+    display_name: Ramon
+    gravatar: e0aaa4446740a255fc4e74d44ea4d6bb
+    email: ramon@cyber-duck.co.uk
+    web: http://ramonlapenta.com
+    github: ramono

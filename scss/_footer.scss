@@ -1,0 +1,33 @@
+// * Footer styles
+
+.footer {
+    background-color: desaturate(lighten($brand, 40), 20);
+    color: $white;
+    .foot-inner {
+        padding: ($gutter/2) $gutter;
+        background-color: desaturate(lighten($brand, 35), 20);
+    }
+    a {
+        color: rgba($white, 0.8);
+        text-decoration: underline;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+@media (min-width: $breakpoint-large) {
+
+
+
+}
+@media (min-width: $breakpoint-medium) and (max-width: ($breakpoint-large - 1)) {
+
+  
+
+}
+@media (min-width: $breakpoint-small) and (max-width: ($breakpoint-medium - 1)) {
+
+  
+
+}

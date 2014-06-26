@@ -1,49 +1,55 @@
 // Colours
-$highlight:				#fa9200;
+$highlight:				#fa9200 !global;
+$brand:         		#313967 !global;
 
-$error:             	#f00;
-$error-bg: 		    	#ffe5e5;
+$border: 				desaturate(lighten($brand, 60), 20) !global;
+$meta: 					desaturate(lighten($brand, 30), 70) !global;
 
-$success: 		    	#390;
-$success-bg: 	    	#eaf5e5;
+$body-bg: 				#F1F1F1 !global;
+$code-bg:   			#FFFAE9 !global;
 
-$info: 			    	#39f;
-$info-bg: 		    	#eaf5ff;
+$error:             	#f00 !global;
+$error-bg: 		    	#ffe5e5 !global;
 
-$warning: 				#ff0;
-$warning-bg: 			#ffffe5;
+$success: 		    	#390 !global;
+$success-bg: 	    	#eaf5e5 !global;
 
-$black:             	#000;
-$white:             	#fff;
-$text:              	#000;
-$title:					#000;
+$info: 			    	#39f !global;
+$info-bg: 		    	#eaf5ff !global;
 
-$brand:         #313967;
+$warning: 				#ff0 !global;
+$warning-bg: 			#ffffe5 !global;
+
+$black:             	#000 !global;
+$white:             	#fff !global;
+$text:              	desaturate(lighten($brand, 20), 40) !global;
+$title:					$brand !global;
+
 
 
 // Grid
-$col-qty:				12;
-$col-width: 			60px;
-$gutter:				20px;
+$col-qty:				12 !global;
+$col-width: 			60px !global;
+$gutter:				20px !global;
 
 // Large desktop grid
-$xl-col-width: 			70px;
-$xl-gutter:				30px;
+$xl-col-width: 			70px !global;
+$xl-gutter:				30px !global;
 
 
 // Breakpoints
-$breakpoint-xl: 		1360px;
-$breakpoint-large: 		1024px;
-$breakpoint-medium: 	680px;
-$breakpoint-small: 		120px;
+$breakpoint-xl: 		1360px !global;
+$breakpoint-large: 		1024px !global;
+$breakpoint-medium: 	680px !global;
+$breakpoint-small: 		120px !global;
 
 
 // Paths
-$img: 		    		'../img/';
-$sprite: 		    	'../img/sprite.png';
-$fonts: 		    	'../fonts/';
+$img: 		    		'../img/' !global;
+$sprite: 		    	'../img/sprite.png' !global;
+$fonts: 		    	'../fonts/' !global;
 
 
 // Typography
-$body-font: 			sans-serif;
-$title-font: 			serif;
+$body-font: 			'Roboto Slab', serif !global;
+$title-font: 			$body-font !global;

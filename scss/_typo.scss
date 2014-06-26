@@ -1,0 +1,61 @@
+// * Typography
+
+body {
+    color: $text;
+    font-family: $body-font;
+    font-size: 18px;
+    line-height: 1.4em;
+    font-weight: 300;
+}
+
+h1 {
+    a {
+        text-decoration: none;
+    }
+}
+
+h2 {
+    font-family: $title-font;
+    color: $title;
+    font-size: 1.6em;
+    line-height: 1.2em;
+    font-weight: 400;
+    a {
+        text-decoration: none;
+        display: block;
+    }
+}
+
+a {
+    color: $brand;
+}
+
+
+@media (min-width: $breakpoint-large) {
+
+
+
+}
+@media (min-width: $breakpoint-medium) and (max-width: ($breakpoint-large - 1)) {
+
+    body {
+        font-size: 16px;
+    }
+
+}
+@media (min-width: $breakpoint-small) and (max-width: ($breakpoint-medium - 1)) {
+
+    body {
+        font-size: 14px;
+    }
+
+}
+
+// * Extra large desktop
+@media (min-width: $breakpoint-xl) {
+
+    body {
+        font-size: 20px;
+    }
+
+}

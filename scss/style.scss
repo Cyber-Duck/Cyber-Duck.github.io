@@ -10,7 +10,20 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: desaturate(lighten($brand,67),70);
-  color: $text;
+  background: $body-bg;
 }
 
+a img {
+	border: 0;
+}
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.btn-back {
+	margin: 0;
+	padding: 0 0 $gutter 0;
+}
+
+@import 'buttons';
