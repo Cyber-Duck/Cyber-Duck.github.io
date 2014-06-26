@@ -770,13 +770,6 @@ a {
   margin: 0 0 10px 0;
   padding-right: 70px;
 }
-.post pre {
-  width: 100%;
-  background-color: #fffae9;
-  padding: 20px;
-  margin-left: -20px;
-  overflow: auto;
-}
 .post footer {
   border-top: 1px dotted #e1e2e9;
 }
