@@ -2,7 +2,6 @@
 layout: post
 title:  "Using Composer with Opencart"
 date:   2014-12-09 11:22:52
-categories: jekyll update
 author: ben
 ---
 
@@ -48,7 +47,7 @@ That's it and now you can start to require packages for your project. First thin
 {% endhighlight %}
 
 ### Packages to install
-There are lots of packages to choose from however as a starter here are some we use regularly in our Opencart installations.
+There are lots of packages to choose from. However as a starter here are some we use regularly in our Opencart installations.
 
 #### Whoops / Sentry
 Opencart's error handling leaves a lot to be desired and we love the [Whoops](http://filp.github.io/whoops/) library. We also use [Sentry](https://getsentry.com/welcome/) to report on PHP errors in production. So we created [a repo](https://github.com/Cyber-Duck/opencart-sentry-raven-whoops) that shows how you can integrate Whoops and Sentry into opencart with Composer.
