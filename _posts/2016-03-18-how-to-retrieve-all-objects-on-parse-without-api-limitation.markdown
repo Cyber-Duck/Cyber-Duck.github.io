@@ -9,7 +9,7 @@ comment: true
 Parse is great, even if they are planning to shutdown their services in 2017...
 However, like a lot of other APIs they limit the amount of data you retrieve from them via a single call. The default value is `100` and can be maxed up to `1000` but what if you have 1001+ objects you'd like to retrieve?
 
-### Well... some solutions...
+### Well, some solutions
 
 A lot of people are using solutions are using `limit()` alongside with `skip()` from Parse JS SDK.
 
@@ -21,7 +21,7 @@ It's basically like a pagination system where you can use offsets and ask object
 
 ![](http://replygif.net/i/1010.gif)
 
-### Our solution: Parse CloudCode!
+### Our solution - Parse CloudCode!
 
 The CloudCode **cloudcode/cloud/main.js**.
 {% highlight javascript startinline %}
