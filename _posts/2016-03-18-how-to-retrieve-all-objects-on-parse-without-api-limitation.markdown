@@ -14,8 +14,8 @@ Well... some solutions...
 
 A lot of people are using solutions are using `limit()` alongside with `skip()` from Parse JS SDK.
 
-https://parse.com/questions/loading-more-than-100-objects
-http://stackoverflow.com/questions/30562620/api-100-objects-limit
+[https://parse.com/questions/loading-more-than-100-objects](https://parse.com/questions/loading-more-than-100-objects)
+[http://stackoverflow.com/questions/30562620/api-100-objects-limit](http://stackoverflow.com/questions/30562620/api-100-objects-limit)
 
 It's basically like a pagination system where you can use offsets and ask objects skipping the first `1000` and retrieve the next `1000`. You would obviously have to repeat that. It's convenient and you _could_ do that but at some point, the Parse API might throw that nasty error at your face
 `Error: Skips larger than 10000 are not allowed`.
