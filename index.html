@@ -20,7 +20,7 @@ layout: default
                         {% endcase %}
                         {{ post.date | date: "%B" }}
                     {{ post.date | date: "%Y" }}
-                    {% if page.comments %} • <a href="{{ page.url }}index.html#disqus_thread" data-disqus-identifier="{{page.url}}"></a>{% endif %}
+                    {% if post.comments %} • <a href="{{ post.url }}index.html#disqus_thread" data-disqus-identifier="{{post.url}}"></a>{% endif %}
                     <span class="avatar">
                         <img src="http://www.gravatar.com/avatar/{{ author.gravatar }}.png"/>
                     </span>
