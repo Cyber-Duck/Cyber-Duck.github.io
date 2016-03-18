@@ -3,7 +3,7 @@ layout: post
 title:  "Using Composer with Opencart"
 date:   2014-12-09 11:22:52
 author: ben
-comment: true
+comments: true
 ---
 
 If you haven't already heard of it, [Composer](https://getcomposer.org/) is a dependency manager for php and has really made an impact in the PHP development community.

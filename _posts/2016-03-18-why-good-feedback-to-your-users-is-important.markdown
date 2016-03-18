@@ -3,7 +3,7 @@ layout: post
 title:  "Why close production data during QA, poor connection testing and good feedback to your user are important for a mobile project"
 date:   2016-03-18 15:07:32
 author: clem
-comment: true
+comments: true
 ---
 
 Just wanted to post something really quickly, not really technical (that you might be already aware) and as it's been (quite) a while since we haven't posted anything here, let get rid of the dust!

@@ -3,7 +3,7 @@ layout: post
 title:  "How to retrieve all objects on Parse without API limitation"
 date:   2016-03-18 18:07:32
 author: clem
-comment: true
+comments: true
 ---
 
 Parse is great, even if they are planning to shutdown their services in 2017...

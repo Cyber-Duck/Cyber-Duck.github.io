@@ -3,7 +3,7 @@ layout: post
 title:  "The process behind Hoisin.scss – our own front-end development framework"
 date:   2014-06-17 11:22:52
 author: ramon
-comment: true
+comments: true
 ---
 As part of Cyber-Duck’s R&D culture, we constantly evaluate emerging technology trends, to optimise our workflow and be prepared for the future. So, we developed Hoisin.scss, a simple, responsive mini framework, which standardises the work of our front-end team, while giving us full, creative control to tailor work to each project. Here, I will explain the process behind the framework’s creation, and the advantages it brings.
 
