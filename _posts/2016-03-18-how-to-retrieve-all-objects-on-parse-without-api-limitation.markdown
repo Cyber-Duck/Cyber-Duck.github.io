@@ -21,7 +21,8 @@ It's basically like a pagination system where you can use offsets and ask object
 
 ![](http://replygif.net/i/1010.gif)
 
-### Our solution - Parse CloudCode!
+Our:... solution - Parse CloudCode!
+==============================
 
 The CloudCode **cloudcode/cloud/main.js**.
 {% highlight javascript startinline %}
