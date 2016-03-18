@@ -3,13 +3,14 @@ layout: post
 title:  "Using Composer with Opencart"
 date:   2014-12-09 11:22:52
 author: ben
+comment: true
 ---
 
 If you haven't already heard of it, [Composer](https://getcomposer.org/) is a dependency manager for php and has really made an impact in the PHP development community.
 It brings the same advantages as Node's [NPM](https://www.npmjs.org/) and Ruby's [Gem](https://rubygems.org/) package managers to the PHP world. Lots of other frameworks like Laravel use it to manage their core files and plugins. There are also other projects to try and bring Composer management to products like [Wordpress](http://wpackagist.org/) and with just a little modification we can try to bring some of these same advantages to Opencart.
 
 ### Use in Opencart
-Unfortunately at the time of writing Opencart does not support Composer out of the box. I have added a suggestion to their [uservoice](http://opencart.uservoice.com/forums/52387-general/suggestions/6817537-use-composer-to-manage-opencart-and-extensions), so if you think its a good idea please vote for it! 
+Unfortunately at the time of writing Opencart does not support Composer out of the box. I have added a suggestion to their [uservoice](http://opencart.uservoice.com/forums/52387-general/suggestions/6817537-use-composer-to-manage-opencart-and-extensions), so if you think its a good idea please vote for it!
 However we can quite easily integrate composer with opencart and there is already an extension for 2.0.0.0 that does [just that](http://www.opencart.com/index.php?route=extension/extension/info&extension_id=19646&filter_search=composer).
 
 If you want to do it yourself, you just need to include the autoload.php file somewhere in the Opencart startup. This is the vQmod file we usually use:
@@ -53,7 +54,7 @@ There are lots of packages to choose from. However as a starter here are some we
 Opencart's error handling leaves a lot to be desired and we love the [Whoops](http://filp.github.io/whoops/) library. We also use [Sentry](https://getsentry.com/welcome/) to report on PHP errors in production. So we created [a repo](https://github.com/Cyber-Duck/opencart-sentry-raven-whoops) that shows how you can integrate Whoops and Sentry into opencart with Composer.
 
 #### Phinx
-Another issue with Opencart is that it doesn't have any built in support for database migrations. 
+Another issue with Opencart is that it doesn't have any built in support for database migrations.
 However there is a nice stand alone package called [Phinx](https://phinx.org/) that lets you create and manage migrations.
 All you need to do is add phinx as a dependency in your composer.json:
 

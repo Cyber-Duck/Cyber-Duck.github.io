@@ -1,7 +1,7 @@
 # Site settings
-title: Cyber-Duck Developer's Blog
-email: info@cyber-duck.co.uk
-description: "A more technical blog from Cyber-Duck"
+title: Cyber-Duck Ltd - Technical Blog
+email: dev@cyber-duck.co.uk
+description: "A more technical blog from Cyber-Duck Ltd technical team."
 baseurl: "http://cyber-duck.github.io"
 url: "http://cyber-duck.github.io"
 username: Cyber-Duck
@@ -12,17 +12,24 @@ markdown: kramdown
 permalink: pretty
 
 authors:
-  ben:
-    name: Ben Speakman
-    display_name: Ben
-    gravatar: 0a75268f75cc85e38c2c0375c3523aee
-    email: ben@cyber-duck.co.uk
-    web: http://threesquared.net
-    github: Ben-Speakman
-  ramon:
-    name: Ramon Lapenta
-    display_name: Ramon
-    gravatar: e0aaa4446740a255fc4e74d44ea4d6bb
-    email: ramon@cyber-duck.co.uk
-    web: http://ramonlapenta.com
-    github: ramono
+    ben:
+        name: Ben Speakman
+        display_name: Ben
+        gravatar: 0a75268f75cc85e38c2c0375c3523aee
+        email: ben@cyber-duck.co.uk
+        web: http://threesquared.net
+        github: Ben-Speakman
+    ramon:
+        name: Ramon Lapenta
+        display_name: Ramon
+        gravatar: e0aaa4446740a255fc4e74d44ea4d6bb
+        email: ramon@cyber-duck.co.uk
+        web: http://ramonlapenta.com
+        github: ramono
+    clem:
+        name: Clément Blanco
+        display_name: Clem
+        gravatar: 77b250f285e935a45f32fc6a96dafbf3
+        email: clement@cyber-duck.co.uk
+        web: http://ramonlapenta.com
+        github: Claymm
