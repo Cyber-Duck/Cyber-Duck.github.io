@@ -10,7 +10,16 @@ layout: default
 				<header>
 				    <h1><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></h1>
 				    <p class="post-meta">
-				    	{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} by {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}{% if page.comments %} • <a href="{{ page.url }}index.html#disqus_thread" data-disqus-identifier="{{page.url}}"></a>{% endif %}
+				    	{{ page.date | date: "%b %-d, %Y" }}
+                        {% if page.author %}
+                            by {{ page.author }}
+                        {% endif %}
+                        {% if page.meta %}
+                            • {{ page.meta }}
+                        {% endif %}
+                        {% if page.comments %}
+                            • <a href="{{ page.url }}index.html#disqus_thread" data-disqus-identifier="{{page.url}}"></a>
+                        {% endif %}
 	                    <span class="avatar">
 	                        <img src="http://www.gravatar.com/avatar/{{ author.gravatar }}.png"/>
 	                    </span>
