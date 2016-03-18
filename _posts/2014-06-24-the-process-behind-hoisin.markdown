@@ -2,7 +2,6 @@
 layout: post
 title:  "The process behind Hoisin.scss – our own front-end development framework"
 date:   2014-06-17 11:22:52
-categories: jekyll update
 author: ramon
 comment: true
 ---

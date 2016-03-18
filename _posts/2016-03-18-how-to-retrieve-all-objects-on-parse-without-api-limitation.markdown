@@ -1,13 +1,10 @@
 ---
 layout: post
 title:  "How to retrieve all objects on Parse without API limitation"
-date:   2016-03-18 16:07:32
-categories: jekyll update
+date:   2016-03-18 18:07:32
 author: clem
 comment: true
 ---
-
-### The problem
 
 Parse is great, even if they are planning to shutdown their services in 2017...
 However, like a lot of other APIs they limit the amount of data you retrieve from them via a single call. The default value is `100` and can be maxed up to `1000` but what if you have 1001+ objects you'd like to retrieve?
@@ -19,14 +16,15 @@ A lot of people are using solutions are using `limit()` alongside with `skip()` 
 https://parse.com/questions/loading-more-than-100-objects
 http://stackoverflow.com/questions/30562620/api-100-objects-limit
 
-It's basically like a pagination system where you can use offsets and ask objects skipping the first `1000` and retrieve the next `1000`. You would obviously have to repeat that. It's convenient and you _could_ do that but at some point, the Parse API might throw that nasty error at your face `Error: Skips larger than 10000 are not allowed`.
+It's basically like a pagination system where you can use offsets and ask objects skipping the first `1000` and retrieve the next `1000`. You would obviously have to repeat that. It's convenient and you _could_ do that but at some point, the Parse API might throw that nasty error at your face
+`Error: Skips larger than 10000 are not allowed`.
 
 ![](http://replygif.net/i/1010.gif)
 
 ### Our solution: Parse CloudCode!
 
 The CloudCode **cloudcode/cloud/main.js**.
-```javascript
+{% highlight javascript startinline %}
 Parse.Cloud.define("retrieveAllObjects", function(request, status) {
     var result     = [];
     var chunk_size = 1000;
@@ -59,7 +57,7 @@ Parse.Cloud.define("retrieveAllObjects", function(request, status) {
     };
     process(false);
 });
-```
+{% endhighlight %}
 
 _Disclaimer:_ this was highly inspired by some snippet I found somewhere but unfortunately I can find that link again. I'll keep looking for it...
 
@@ -67,7 +65,7 @@ Plenty of useful information on how CloudCode works and how to deploy it, direct
 This is the code you need to deploy on your Parse instance and basically this will create a new endpoint for you to consume.
 
 Once it's deployed, it can be consumed by using either a Promise (or not, it's up to you really):
-```javascript
+{% highlight javascript startinline %}
 Parse.Cloud.run('retrieveAllObjects', {
     object_type: "MyClass", // REQUIRED - string: name of your Parse class
     update_at: moment().toDate(), // OPTIONAL - JS Date object: Only retrieve objects where update_at is higher than...
@@ -76,7 +74,7 @@ Parse.Cloud.run('retrieveAllObjects', {
     /* SUCCESS */
     // if objects.length > 0 objects can be looped through
 });
-```
+{% endhighlight %}
 
 We assume you know how to use [Parse JS SDK](https://parse.com/docs/js/guide).
 

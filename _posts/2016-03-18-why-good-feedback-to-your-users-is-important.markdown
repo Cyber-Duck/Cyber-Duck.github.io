@@ -2,7 +2,6 @@
 layout: post
 title:  "Why close production data during QA, poor connection testing and good feedback to your user are important for a mobile project"
 date:   2016-03-18 15:07:32
-categories: jekyll update
 author: clem
 comment: true
 ---
@@ -12,7 +11,8 @@ Just wanted to post something really quickly, not really technical (that you mig
 ![](http://i.imgur.com/8wHGogr.gif)
 
 We've recently developed an iPad application for one of our client and it's been quite a successful project so far.
-Except maybe the fact that we've been using Parse. Yeah, I know but who could have predicted that the leader on the MBaaS market would shutdown right? They've announced **literally** a week after the project was very close from completion that they will be shutting down their services in 2017. I was with that guy, in the same liquor store...
+Except maybe the fact that we've been using Parse. Yeah, I know but who could have predicted that the leader on the MBaaS market would shutdown right?
+They've announced **literally** a week after the project was very close from completion that they will be shutting down their services in 2017. I was with that guy, in the same liquor store...
 
 ![](http://s3.amazonaws.com/www.appcelerator.com.images/parse-tweet-sentiments.png)
 
@@ -59,7 +59,7 @@ Here with our case, luckily we had some production data. We've worked on making 
 If you don't have production like data yet, try to build yourself (mocking) a **proper** set of data. Depending on the technology you use, there are plenty of tools out there to help you to do that.
 
 When we say "proper", we mean the **type** of data needs to be similar and we also mean **a lot**.
-For example one of our issue here was that Parse is maxing up the amount of objects you can retrieve from their API. The default limit is set to 100 and can be increased to 1000. Above that limit, well you need to find another way around. This is how we found our way around: [How to retrieve all objects on Parse without API limitation](http://cyber-duck.github.io/2016-03-18-how-to-retrieve-all-objects-on-parse-without-api-limitation).
+For example one of our issue here was that Parse is maxing up the amount of objects you can retrieve from their API. The default limit is set to 100 and can be increased to 1000. Above that limit, well you need to find another way around. This is how we found our way around: [How to retrieve all objects on Parse without API limitation](http://cyber-duck.github.io/2016/03/18/how-to-retrieve-all-objects-on-parse-without-api-limitation).
 
 Other issues bubbled up to use at this point and all of then could have been spotted with "production like" data.
 

@@ -2,7 +2,6 @@
 layout: post
 title:  "Deploying a Codeigniter application to multiple EC2 instances with Capistrano"
 date:   2014-06-16 11:22:52
-categories: jekyll update
 author: ben
 comment: true
 ---
