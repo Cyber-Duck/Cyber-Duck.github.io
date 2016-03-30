@@ -13,14 +13,20 @@ layout: default
                 <p class="post-meta">By <a href="{{ author.web }}" target="_blank">{{ author.name }}</a> -
                     {% assign d = post.date | date: "%-d" %}
                     {% case d %}
-                        {% when '1' or '21' or '31' %}{{ d }}st
-                        {% when '2' or '22' %}{{ d }}nd
-                        {% when '3' or '23' %}{{ d }}rd
-                        {% else %}{{ d }}th
+                        {% when '1' or '21' or '31' %}
+                            {{ d }}st
+                        {% when '2' or '22' %}
+                            {{ d }}nd
+                        {% when '3' or '23' %}
+                            {{ d }}rd
+                        {% else %}
+                            {{ d }}th
                         {% endcase %}
                         {{ post.date | date: "%B" }}
                     {{ post.date | date: "%Y" }}
-                    {% if post.comments %} • <a href="{{ post.url }}index.html#disqus_thread" data-disqus-identifier="{{post.url}}"></a>{% endif %}
+                    {% if post.comments %}
+                        • <a href="{{ post.url }}index.html#disqus_thread" data-disqus-identifier="{{post.url}}"></a>
+                    {% endif %}
                     <span class="avatar">
                         <img src="http://www.gravatar.com/avatar/{{ author.gravatar }}.png"/>
                     </span>

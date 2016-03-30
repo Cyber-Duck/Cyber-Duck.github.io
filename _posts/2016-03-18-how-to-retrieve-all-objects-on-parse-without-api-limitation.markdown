@@ -12,7 +12,7 @@ However, like a lot of other APIs they limit the amount of data you retrieve fro
 Well... some solutions...
 =========================
 
-A lot of people are using solutions are using `limit()` alongside with `skip()` from Parse JS SDK.
+A lot of people who are looking for a solution are mentioning `limit()` alongside with `skip()` from Parse JS SDK.
 
 [https://parse.com/questions/loading-more-than-100-objects](https://parse.com/questions/loading-more-than-100-objects)
 [http://stackoverflow.com/questions/30562620/api-100-objects-limit](http://stackoverflow.com/questions/30562620/api-100-objects-limit)
@@ -22,8 +22,10 @@ It's basically like a pagination system where you can use offsets and ask object
 
 ![](http://replygif.net/i/1010.gif)
 
-Our solution: Parse CloudCode!
-==============================
+Under the hood, Parse is using MongoDB database engine, which as you may know, is using the NoSQL technology. Don't get me wrong, NoSQL is great, especially when reliability and performances are keys. However, one of the limitation or "cons" often mentioned is "pagination".
+
+Our solution: Server-side scripts - Parse CloudCode!
+====================================================
 
 The CloudCode **cloudcode/cloud/main.js**.
 {% highlight javascript startinline %}
@@ -61,10 +63,10 @@ Parse.Cloud.define("retrieveAllObjects", function(request, status) {
 });
 {% endhighlight %}
 
-_Disclaimer:_ this was highly inspired by some snippet I found somewhere but unfortunately I can find that link again. I'll keep looking for it...
+_Disclaimer:_ this was highly inspired by some snippets we found across multiple websites. We'll look into adding the links to this article...
 
 Plenty of useful information on how CloudCode works and how to deploy it, directly accessible on the [Parse documentation](https://parse.com/docs/cloudcode/guide).
-This is the code you need to deploy on your Parse instance and basically this will create a new endpoint for you to consume.
+This is the code you need to deploy on your Parse instance and basically this will create a new endpoint for you to "consume".
 
 Once it's deployed, it can be consumed by using either a Promise (or not, it's up to you really):
 {% highlight javascript startinline %}
@@ -87,5 +89,6 @@ Of course, we're not saying our solution is the best, we simply wanted to share 
 The big advantage of our approach is that we *don't* use `skip` and `limit`, we order our result by `objectId` which is the PK (primary key) on Parse and use a self-invoked function alongside with the PK as a pagination controller for the offset. This way, you won't ever be limited to `10000` results.
 
 Obviously this takes a bit longer to get executed but the workload stays server-side and at least you know that the response you receive contains **everything**.
+Server-side scripts could also be a potential approach for other pagination problems.
 
-That's all folks! Checkout out [the gist](https://gist.github.com/Claymm/644eae2426a50cb2b98d) for this and feel free to comment/fork/improve/share it!
+That's all folks! Check out [the gist](https://gist.github.com/Claymm/644eae2426a50cb2b98d) for this and feel free to comment/fork/improve/share it!
