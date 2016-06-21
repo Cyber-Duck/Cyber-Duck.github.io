@@ -2,4 +2,4 @@
 
 Available at: http://cyber-duck.github.io
 
-Proudly powered by Jekyll.
+Powered by Jekyll.
