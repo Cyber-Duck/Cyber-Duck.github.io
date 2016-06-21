@@ -33,3 +33,11 @@ authors:
         email: clement@cyber-duck.co.uk
         web: https://www.cyber-duck.co.uk/who-we-are/team/clement-blanco
         github: Claymm
+    david:
+        name: David Jordan
+        display_name: Dave
+        email: david@cyber-duck.co.uk
+        gravatar: b327ed89335328c46e0d35f5414ea7d5
+        web: https://www.cyber-duck.co.uk/who-we-are/team/david-jordan
+        github: suspiciousfellow
+
