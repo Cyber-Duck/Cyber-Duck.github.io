@@ -23,7 +23,7 @@ skip to the end and follow the instruction. Meanwhile, I'll try to flesh out a f
 In this somewhat contrived (don't be too shocked) example, let's suppose we want to list some of the latest sites
  we've discovered recently on our web adventures:
 
-{% raw %} {% highlight php startinline %}
+{% highlight php startinline %} {% raw %} 
 @foreach(
 [
     'wibble' => 'http://www.excite.com/',
@@ -35,7 +35,7 @@ In this somewhat contrived (don't be too shocked) example, let's suppose we want
 <li><a href="{{$linkToOldWebsite}}">{{$excitingCaption}}</a></li>
 
 @endforeach
-{% endhighlight %} {% endraw %}
+{% endraw %} {% endhighlight %}
 So let's stick that in the page and see what that compiles to. 
 
 By the way we can make discovering that considerably easier by appending ```@breakpoint``` to the
@@ -43,7 +43,7 @@ above - one of the many useful features that Blade Extensions support. When runn
 configured (and why are you developing any other way?), this will handily stop execution at that point in the 
 _compiled_ file (blade can be tricky to debug otherwise). 
 
-{% raw %} {% highlight php startinline %} 
+{% highlight php startinline %} {% raw %}  
 <?php foreach(
 [
 'wibble' => 'http://www.excite.com/',
@@ -60,7 +60,7 @@ endforeach;
 app('blade.helpers')->get('loop')->endLoop($loop);
 ?>
 
-{% endhighlight %} {% endraw %}
+{% endraw %} {% endhighlight %}
 Well, that looks alright doesn't it? Don't know what the last bit's about but hey...
 
 Wrong!
@@ -68,7 +68,7 @@ Wrong!
 The documentation clearly suggests we should be seeing a ```$loop``` variable being introduced somewhere in the plain php. 
 So that in principle we could go like:
 
-{% raw %} {% highlight php startinline %} 
+{% highlight php startinline %} {% raw %}  
     @foreach(
     [
         'wibble' => 'http://www.excite.com/',
@@ -81,12 +81,12 @@ So that in principle we could go like:
 
     @endforeach
 
-{% endhighlight %} {% endraw %}
+{% endraw %} {% endhighlight %}
 But where's the ```$loop```?
 
 A clue comes if we mix things up a bit and define the array before the ```foreach```. 
 
-{% raw %} {% highlight php startinline %} 
+{% highlight php startinline %} {% raw %}  
 <?php
 
     $arrayOfExcitement = [
@@ -102,10 +102,10 @@ A clue comes if we mix things up a bit and define the array before the ```foreac
 
 @endforeach
 
-{% endhighlight %} {% endraw %}
+{% endraw %} {% endhighlight %}
 That turns out to compile to (give or take a bit of indentation for clarity):
 
-{% raw %} {% highlight php startinline %} 
+{% highlight php startinline %} {% raw %}  
 <?php
     app('blade.helpers')->get('loop')->newLoop($arrayOfExcitement);
     foreach(app('blade.helpers')->get('loop')->getLastStack()->getItems() as  $excitingCaption => $linkToOldWebsite):
@@ -119,7 +119,7 @@ That turns out to compile to (give or take a bit of indentation for clarity):
     endforeach;
     app('blade.helpers')->get('loop')->endLoop($loop);
 ?>
-{% endhighlight %} {% endraw %}
+{% endraw %} {% endhighlight %}
 That's rather different, isn't it? What's all this newLoop thingy-gummy about? And why is this suddenly working?
 And what can we do to fix it? 
 
@@ -183,7 +183,7 @@ foreach(app('blade.helpers')->get('loop')->getLastStack()->getItems() as $3):
 ?>
 EOT
 
-{% endhighlight %} {% endraw %}
+{% endraw %} {% endhighlight %}
 In other words, there's back-references in the replacement string. So actually we need to change the ```.``` to ```(?:.|\n)``` 
 to make it a non capturing  group - it's either that or change the replacement string to change the backreference indexes, and somehow
 that feels less elegant to me.
@@ -197,7 +197,7 @@ is loaded from blade_extensions.overrides.
 
 So tl;dr - the solution to the problem is to create a file in your project called ```config/blade_extensions.php``` with the following content:
 
-{% raw %} {% highlight php startinline %} 
+{% highlight php startinline %} {% raw %}  
 <?php
 
 /*
@@ -215,5 +215,5 @@ return [
         ]
     ]
 ];
-{% endhighlight %} {% endraw %}
+{% endraw %} {% endhighlight %}
 And now you have access to ```$loop```. Use it wisely.
