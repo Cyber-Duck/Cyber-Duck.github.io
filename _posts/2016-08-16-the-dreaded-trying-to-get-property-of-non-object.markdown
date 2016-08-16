@@ -23,7 +23,7 @@ skip to the end and follow the instruction. Meanwhile, I'll try to flesh out a f
 In this somewhat contrived (don't be too shocked) example, let's suppose we want to list some of the latest sites
  we've discovered recently on our web adventures:
 
-{% highlight blade startinline %} {% raw %}
+{% highlight blade %} {% raw %}
 @foreach(
 [
     'wibble' => 'http://www.excite.com/',
