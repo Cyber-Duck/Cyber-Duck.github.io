@@ -23,7 +23,7 @@ skip to the end and follow the instruction. Meanwhile, I'll try to flesh out a f
 In this somewhat contrived (don't be too shocked) example, let's suppose we want to list some of the latest sites
  we've discovered recently on our web adventures:
 
-{% highlight php startinline %} {% raw %} 
+{% highlight blade startinline %} {% raw %}
 @foreach(
 [
     'wibble' => 'http://www.excite.com/',
@@ -43,7 +43,7 @@ above - one of the many useful features that Blade Extensions support. When runn
 configured (and why are you developing any other way?), this will handily stop execution at that point in the 
 _compiled_ file (blade can be tricky to debug otherwise). 
 
-{% highlight php startinline %} {% raw %}  
+{% highlight blade startinline %} {% raw %}
 <?php foreach(
 [
 'wibble' => 'http://www.excite.com/',
@@ -69,7 +69,7 @@ Wrong!
 The documentation clearly suggests we should be seeing a ```$loop``` variable being introduced somewhere in the plain php. 
 So that in principle we could go like:
 
-{% highlight php startinline %} {% raw %}  
+{% highlight blade startinline %} {% raw %}
     @foreach(
     [
         'wibble' => 'http://www.excite.com/',
@@ -88,7 +88,7 @@ But where's the ```$loop```?
 
 A clue comes if we mix things up a bit and define the array before the ```foreach```. 
 
-{% highlight php startinline %} {% raw %}  
+{% highlight blade startinline %} {% raw %}
 <?php
 
     $arrayOfExcitement = [
@@ -108,7 +108,7 @@ A clue comes if we mix things up a bit and define the array before the ```foreac
 {% endraw %} {% endhighlight %}
 That turns out to compile to (give or take a bit of indentation for clarity):
 
-{% highlight php startinline %} {% raw %}  
+{% highlight blade startinline %} {% raw %}
 <?php
     app('blade.helpers')->get('loop')->newLoop($arrayOfExcitement);
     foreach(app('blade.helpers')->get('loop')->getLastStack()->getItems() as  $excitingCaption => $linkToOldWebsite):
@@ -194,6 +194,7 @@ that feels less elegant to me.
 
 So our final regex now becomes 
 
+{% highlight
 `'/(?<!\w)(\s*)@foreach(?:\s*)\(((?:.|\n)*?)(?:\sas)((?:.|\n)*?)\)/'`
 
 Alright, we have a regex. How do we use it? A quick peek at the source code makes it clear that over-rides config's 
