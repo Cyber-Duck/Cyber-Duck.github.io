@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "The dreaded Trying to get property of non-object"
+title:  "The dreaded 'Trying to get property of non-object'"
 date:   2016-08-16 12:30:00
 author: david
 comments: true
@@ -32,7 +32,7 @@ In this somewhat contrived (don't be too shocked) example, let's suppose we want
  as $excitingCaption => $linkToOldWebsite)
 
 
-<li><a href="{{$linkToOldWebsite}}">{{$excitingCaption}}</a></li>
+<li><a href="\{\{$linkToOldWebsite\}\}">\{\{$excitingCaption\}\}</a></li>
 
 @endforeach
 ```` 
@@ -79,7 +79,7 @@ So that in principle we could go like:
     as $excitingCaption => $linkToOldWebsite)
 
 
-        <li><a href="{{$linkToOldWebsite}}">{{$excitingCaption}} - Number {{$loop->index1}}</a></li>
+        <li><a href="\{\{$linkToOldWebsite\}\}">\{\{$excitingCaption\}\} - Number \{\{$loop->index1\}\}</a></li>
 
     @endforeach
 
@@ -101,7 +101,7 @@ A clue comes if we mix things up a bit and define the array before the ```foreac
 
 @foreach($arrayOfExcitement as $excitingCaption => $linkToOldWebsite)
 
-    <li><a href="{{$linkToOldWebsite}}">{{$excitingCaption}} - Number {{$loop->index1}}</a></li>
+    <li><a href="\{\{$linkToOldWebsite\}\}">\{\{$excitingCaption\}\} - Number \{\{$loop->index1\}\}</a></li>
 
 @endforeach
 
