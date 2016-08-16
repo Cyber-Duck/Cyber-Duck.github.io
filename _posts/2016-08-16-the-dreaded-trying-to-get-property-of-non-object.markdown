@@ -23,7 +23,7 @@ skip to the end and follow the instruction. Meanwhile, I'll try to flesh out a f
 In this somewhat contrived (don't be too shocked) example, let's suppose we want to list some of the latest sites
  we've discovered recently on our web adventures:
 
-```php
+{% highlight php startinline %} 
 @foreach(
 [
     'wibble' => 'http://www.excite.com/',
@@ -35,8 +35,7 @@ In this somewhat contrived (don't be too shocked) example, let's suppose we want
 <li><a href="{{$linkToOldWebsite}}">{{$excitingCaption}}</a></li>
 
 @endforeach
-```
-
+{% endhighlight %}
 So let's stick that in the page and see what that compiles to. 
 
 By the way we can make discovering that considerably easier by appending ```@breakpoint``` to the
@@ -44,7 +43,7 @@ above - one of the many useful features that Blade Extensions support. When runn
 configured (and why are you developing any other way?), this will handily stop execution at that point in the 
 _compiled_ file (blade can be tricky to debug otherwise). 
 
-```php
+{% highlight php startinline %} 
 <?php foreach(
 [
 'wibble' => 'http://www.excite.com/',
@@ -61,8 +60,7 @@ endforeach;
 app('blade.helpers')->get('loop')->endLoop($loop);
 ?>
 
-```
-
+{% endhighlight %}
 Well, that looks alright doesn't it? Don't know what the last bit's about but hey...
 
 Wrong!
@@ -70,7 +68,7 @@ Wrong!
 The documentation clearly suggests we should be seeing a ```$loop``` variable being introduced somewhere in the plain php. 
 So that in principle we could go like:
 
-```php
+{% highlight php startinline %} 
     @foreach(
     [
         'wibble' => 'http://www.excite.com/',
@@ -83,13 +81,12 @@ So that in principle we could go like:
 
     @endforeach
 
-```
-
+{% endhighlight %}
 But where's the ```$loop```?
 
 A clue comes if we mix things up a bit and define the array before the ```foreach```. 
 
-```php
+{% highlight php startinline %} 
 <?php
 
     $arrayOfExcitement = [
@@ -105,11 +102,10 @@ A clue comes if we mix things up a bit and define the array before the ```foreac
 
 @endforeach
 
-```
-
+{% endhighlight %}
 That turns out to compile to (give or take a bit of indentation for clarity):
 
-```php
+{% highlight php startinline %} 
 <?php
     app('blade.helpers')->get('loop')->newLoop($arrayOfExcitement);
     foreach(app('blade.helpers')->get('loop')->getLastStack()->getItems() as  $excitingCaption => $linkToOldWebsite):
@@ -123,8 +119,7 @@ That turns out to compile to (give or take a bit of indentation for clarity):
     endforeach;
     app('blade.helpers')->get('loop')->endLoop($loop);
 ?>
-```
-
+{% endhighlight %}
 That's rather different, isn't it? What's all this newLoop thingy-gummy about? And why is this suddenly working?
 And what can we do to fix it? 
 
@@ -177,7 +172,7 @@ Well, not quite. Obviously we need to stick it in brackets. So we just change th
 
 The above isn't quite right either. Take a look at the full foreach directive (in ```vendor/radic/blade-extensions/src/directives.php```)
 
-```php
+{% highlight php startinline %} 
     'foreach'     => [
         'pattern'     => '/(?<!\\w)(\\s*)@foreach(?:\\s*)\\((.*)(?:\\sas)(.*)\\)/',
         'replacement' => <<<'EOT'
@@ -188,8 +183,7 @@ foreach(app('blade.helpers')->get('loop')->getLastStack()->getItems() as $3):
 ?>
 EOT
 
-```
-
+{% endhighlight %}
 In other words, there's back-references in the replacement string. So actually we need to change the ```.``` to ```(?:.|\n)``` 
 to make it a non capturing  group - it's either that or change the replacement string to change the backreference indexes, and somehow
 that feels less elegant to me.
@@ -203,7 +197,7 @@ is loaded from blade_extensions.overrides.
 
 So tl;dr - the solution to the problem is to create a file in your project called ```config/blade_extensions.php``` with the following content:
 
-```php
+{% highlight php startinline %} 
 <?php
 
 /*
@@ -221,6 +215,5 @@ return [
         ]
     ]
 ];
-```
-
+{% endhighlight %}
 And now you have access to ```$loop```. Use it wisely.
