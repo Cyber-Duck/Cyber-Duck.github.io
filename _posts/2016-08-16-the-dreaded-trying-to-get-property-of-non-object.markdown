@@ -1,4 +1,12 @@
-So at Cyber-Duck we like to use the excellent [Blade Extensions](http://robin.radic.nl/blade-extensions/index.html) which add 
+---
+layout: post
+title:  "The dreaded Trying to get property of non-object"
+date:   2016-08-16 12:30:00
+author: david
+comments: true
+---
+
+So at Cyber-Duck we like to use the excellent [Blade Extensions](http://robin.radic.nl/blade-extensions/index.html) which add
  various helpful features to Blade.
  
 Unfortunately at present there's a bug in the package. Typically it manifests itself as error message 
@@ -215,4 +223,4 @@ return [
 ];
 ````
 
-And now you have access to ```$loop```. Use it wisely. 
+And now you have access to ```$loop```. Use it wisely.
