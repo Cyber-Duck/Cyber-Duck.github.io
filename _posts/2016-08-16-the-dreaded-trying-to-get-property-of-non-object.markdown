@@ -194,7 +194,6 @@ that feels less elegant to me.
 
 So our final regex now becomes 
 
-{% highlight
 `'/(?<!\w)(\s*)@foreach(?:\s*)\(((?:.|\n)*?)(?:\sas)((?:.|\n)*?)\)/'`
 
 Alright, we have a regex. How do we use it? A quick peek at the source code makes it clear that over-rides config's 
