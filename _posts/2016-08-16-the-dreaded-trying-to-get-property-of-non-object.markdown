@@ -52,7 +52,8 @@ _compiled_ file (blade can be tricky to debug otherwise).
  as $excitingCaption => $linkToOldWebsite): ?>
 
 
-    <li><a href="<?php echo e($linkToOldWebsite); ?>"><?php echo e($excitingCaption); ?></a></li>
+    <li><a href="<?php echo e($linkToOldWebsite); ?>">
+    <?php echo e($excitingCaption); ?></a></li>
 
 <?php
 app('blade.helpers')->get('loop')->looped();
@@ -77,7 +78,8 @@ So that in principle we could go like:
     as $excitingCaption => $linkToOldWebsite)
 
 
-        <li><a href="{{$linkToOldWebsite}}">{{$excitingCaption}} - Number {{$loop->index1}}</a></li>
+        <li><a href="{{$linkToOldWebsite}}">{{$excitingCaption}} -
+        Number {{$loop->index1}}</a></li>
 
     @endforeach
 
@@ -98,7 +100,8 @@ A clue comes if we mix things up a bit and define the array before the ```foreac
 
 @foreach($arrayOfExcitement as $excitingCaption => $linkToOldWebsite)
 
-    <li><a href="{{$linkToOldWebsite}}">{{$excitingCaption}} - Number {{$loop->index1}}</a></li>
+    <li><a href="{{$linkToOldWebsite}}">{{$excitingCaption}} -
+    Number {{$loop->index1}}</a></li>
 
 @endforeach
 
@@ -120,6 +123,7 @@ That turns out to compile to (give or take a bit of indentation for clarity):
     app('blade.helpers')->get('loop')->endLoop($loop);
 ?>
 {% endraw %} {% endhighlight %}
+
 That's rather different, isn't it? What's all this newLoop thingy-gummy about? And why is this suddenly working?
 And what can we do to fix it? 
 
@@ -176,11 +180,11 @@ The above isn't quite right either. Take a look at the full foreach directive (i
     'foreach'     => [
         'pattern'     => '/(?<!\\w)(\\s*)@foreach(?:\\s*)\\((.*)(?:\\sas)(.*)\\)/',
         'replacement' => <<<'EOT'
-$1<?php
-app('blade.helpers')->get('loop')->newLoop($2);
-foreach(app('blade.helpers')->get('loop')->getLastStack()->getItems() as $3):
-    $loop = app('blade.helpers')->get('loop')->loop();
-?>
+            $1<?php
+            app('blade.helpers')->get('loop')->newLoop($2);
+            foreach(app('blade.helpers')->get('loop')->getLastStack()->getItems() as $3):
+                $loop = app('blade.helpers')->get('loop')->loop();
+        ?>
 EOT
 
 {% endraw %} {% endhighlight %}
