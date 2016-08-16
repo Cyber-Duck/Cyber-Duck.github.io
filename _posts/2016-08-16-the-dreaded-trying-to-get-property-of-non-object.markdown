@@ -111,11 +111,17 @@ That turns out to compile to (give or take a bit of indentation for clarity):
 {% highlight php startinline %} {% raw %}
 <?php
     app('blade.helpers')->get('loop')->newLoop($arrayOfExcitement);
-    foreach(app('blade.helpers')->get('loop')->getLastStack()->getItems() as  $excitingCaption => $linkToOldWebsite):
+    foreach(app('blade.helpers')
+    ->get('loop')
+    ->getLastStack()
+    ->getItems()
+    as  $excitingCaption => $linkToOldWebsite):
         $loop = app('blade.helpers')->get('loop')->loop();
 ?>
 
-        <li><a href="<?php echo e($linkToOldWebsite); ?>"><?php echo e($excitingCaption); ?> - Number <?php echo e($loop->index1); ?></a></li>
+        <li><a href="<?php echo e($linkToOldWebsite); ?>">
+        <?php echo e($excitingCaption); ?> - Number 
+        <?php echo e($loop->index1); ?></a></li>
 
 <?php
         app('blade.helpers')->get('loop')->looped();
