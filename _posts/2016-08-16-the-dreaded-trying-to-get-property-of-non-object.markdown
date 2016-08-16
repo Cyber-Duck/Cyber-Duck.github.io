@@ -20,8 +20,8 @@ When trying to access the built-in ```$loop``` variable - a variable so useful, 
 We'll explore the problem by provoking the bug and then see what we can do solve it. If you don't care why it works, 
 skip to the end and follow the instruction. Meanwhile, I'll try to flesh out a full blog article from it. See you in a moment!
 
-In this somewhat contrived (don't be too shocked) example, let's suppose we want to list some of the latest sites
- we've discovered recently on our web adventures:
+In this somewhat contrived example, let's suppose we want to list some of the latest sites
+ we've discovered recently on our web adventures. Copying and pasting ```<li>```s in a template is for peasants. Let's use a loop:
 
 {% highlight php startinline %} {% raw %}
 @foreach(
@@ -36,12 +36,13 @@ In this somewhat contrived (don't be too shocked) example, let's suppose we want
 
 @endforeach
 {% endraw %} {% endhighlight %}
-So let's stick that in the page and see what that compiles to. 
 
-By the way we can make discovering that considerably easier by appending ```@breakpoint``` to the
+So let's stick that in the blade template and see what it ends up compiling to.
+
+We can make discovering this considerably easier by appending ```@breakpoint``` to the
 above - one of the many useful features that Blade Extensions support. When running with Xdebug and PhpStorm correctly 
 configured (and why are you developing any other way?), this will handily stop execution at that point in the 
-_compiled_ file (blade can be tricky to debug otherwise). 
+_compiled_ file (by inserting a call to ```xdebug_break```).
 
 {% highlight php startinline %} {% raw %}
 <?php foreach(
@@ -62,12 +63,14 @@ app('blade.helpers')->get('loop')->endLoop($loop);
 ?>
 
 {% endraw %} {% endhighlight %}
-Well, that looks alright doesn't it? Don't know what the last bit's about but hey...
+
+Well, that looks alright doesn't it? We probably don't know what the last bit's about but hey...
 
 Wrong!
 
-The documentation clearly suggests we should be seeing a ```$loop``` variable being introduced somewhere in the plain php. 
-So that in principle we could go like:
+The documentation clearly suggests we should be seeing a ```$loop``` variable being introduced somewhere in the plain php.
+After all, that's pretty much what this article's about. Otherwise it doesn't matter much. This is so that in principle
+we could do something like:
 
 {% highlight php startinline %} {% raw %}
     @foreach(
@@ -84,7 +87,8 @@ So that in principle we could go like:
     @endforeach
 
 {% endraw %} {% endhighlight %}
-But where's the ```$loop```?
+
+But where's the ```$loop``` in the above?
 
 A clue comes if we mix things up a bit and define the array before the ```foreach```. 
 
@@ -106,6 +110,7 @@ A clue comes if we mix things up a bit and define the array before the ```foreac
 @endforeach
 
 {% endraw %} {% endhighlight %}
+
 That turns out to compile to (give or take a bit of indentation for clarity):
 
 {% highlight php startinline %} {% raw %}
@@ -120,7 +125,7 @@ That turns out to compile to (give or take a bit of indentation for clarity):
 ?>
 
         <li><a href="<?php echo e($linkToOldWebsite); ?>">
-        <?php echo e($excitingCaption); ?> - Number 
+        <?php echo e($excitingCaption); ?> - Number
         <?php echo e($loop->index1); ?></a></li>
 
 <?php
@@ -130,12 +135,10 @@ That turns out to compile to (give or take a bit of indentation for clarity):
 ?>
 {% endraw %} {% endhighlight %}
 
-That's rather different, isn't it? What's all this newLoop thingy-gummy about? And why is this suddenly working?
-And what can we do to fix it? 
+That's rather different, isn't it? There's actually a ```$loop``` variable there now.
+So why is this suddenly working and what can we do so that it works without this workaround?
 
-Still, at least the last bit around the foreach actually makes some sense now... 
-
-To answer the above questions, let's start at the beginning.
+Let's start at the beginning.
 
 Possibly the simplest way to extend Blade is to register a custom compiler by calling ```Blade::extend```. These take any non php
 strings and return a parsed version - possibly including php.  
@@ -144,12 +147,12 @@ As an aside, wondering how they avoid dealing with the php without performing bl
 split off the php 'bits' - see documentation for [token_get_all](http://php.net/manual/en/function.token-get-all.php) 
 then admire the source of [```Illuminate\View\Compilers\BladeCompiler```](https://github.com/laravel/framework/blob/5.1/src/Illuminate/View/Compilers/BladeCompiler.php) to understand how it does this
 
-Anyhoo, the approach taken by Blade Extensions to compiling is extremely simple - none of the stuff you learned about when you last
+Anyhow, the approach taken by Blade Extensions to compiling is extremely simple - none of the stuff you learned about when you last
 studied compilers a decade or so ago - it's simply a preg_replace. 
 
-And the pattern it's looking for by default is ```/(?<!\\w)(\s*)@foreach(?:\s*)\((.*)(?:\sas)(.*)\)/```
+And the pattern it's looking for by default is ```(?<!\\w)(\s*)@foreach(?:\s*)\((.*)(?:\sas)(.*)\)```
 
-Yeah, that. Great thing about regular expressions is how even simple ones are immediately clear, right? No, me neither. 
+Great thing about regular expressions is how even simple ones are immediately clear, right? No, me neither.
 But break that regex down into its constituent parts and we can see it's actually pretty simple:
 
 * ```/(?<!\\w)```
@@ -171,16 +174,18 @@ Any amount of any character and then close bracket
 
 See thing is, when I said any character above, I was _lying_. I'm playing games with you. Like a killer whale tossing a seal. 
 
-```.``` in PCRE terms, _without the s modifier_, matches any character. _Apart from new line_. 
+The ```.``` symbol in PCRE, _without the s modifier_, matches any character. _Apart from new line_.
 
 And that's why it's not matching our lovely foreach above. So we need to modify it. We could stick in the s modifier, 
 but actually this isn't a great idea - I have a lovely proof of this, but it's too big to fit in the margins of this page. 
  
 So we have to take an alternative approach. Fortunately, we can keep this simple - we just change the ```.``` to ```.|\n```.
 
-Well, not quite. Obviously we need to stick it in brackets. So we just change the ```.``` to ```(.|\n)```.  Oh wait, everything broke.
+Well, not quite. Obviously we need to stick it in brackets. So we just change the ```.``` to ```(.|\n)```.
 
-The above isn't quite right either. Take a look at the full foreach directive (in ```vendor/radic/blade-extensions/src/directives.php```)
+Oh wait, everything broke.
+
+Take a look at the full foreach directive (in ```vendor/radic/blade-extensions/src/directives.php```)
 
 {% highlight php startinline %} {% raw %}
     'foreach'     => [
@@ -194,13 +199,12 @@ The above isn't quite right either. Take a look at the full foreach directive (i
 EOT
 
 {% endraw %} {% endhighlight %}
-In other words, there's back-references in the replacement string. So actually we need to change the ```.``` to ```(?:.|\n)``` 
-to make it a non capturing  group - it's either that or change the replacement string to change the backreference indexes, and somehow
-that feels less elegant to me.
 
-So our final regex now becomes 
+In other words, there's back-references in the replacement string. Which is obvious really, if you actually think about it.
+So actually we need to change the ```.``` to ```(?:.|\n)``` to make it into a non capturing  group - it's either that or
+change the replacement string to change the backreference indexes, and somehow that feels less elegant to me.
 
-```'/(?<!\w)(\s*)@foreach(?:\s*)\(((?:.|\n)*?)(?:\sas)((?:.|\n)*?)\)/'```
+So our final regex now becomes ```(?<!\w)(\s*)@foreach(?:\s*)\(((?:.|\n)*?)(?:\sas)((?:.|\n)*?)\)```
 
 Alright, we have a regex. How do we use it? A quick peek at the source code makes it clear that over-rides config's 
 is loaded from blade_extensions.overrides. 
