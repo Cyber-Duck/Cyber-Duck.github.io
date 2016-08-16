@@ -172,7 +172,7 @@ Well, not quite. Obviously we need to stick it in brackets. So we just change th
 
 The above isn't quite right either. Take a look at the full foreach directive (in ```vendor/radic/blade-extensions/src/directives.php```)
 
-{% highlight php startinline %}
+{% highlight php startinline %} {% raw %}
     'foreach'     => [
         'pattern'     => '/(?<!\\w)(\\s*)@foreach(?:\\s*)\\((.*)(?:\\sas)(.*)\\)/',
         'replacement' => <<<'EOT'
